@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &101100000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Kight Avatar Mask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: knight
+    m_Weight: 0
+  - m_Path: knight/pCylinder11
+    m_Weight: 0
+  - m_Path: knight/pCylinder20
+    m_Weight: 0
+  - m_Path: knight/pCylinder21
+    m_Weight: 0
+  - m_Path: knight/pCylinder22
+    m_Weight: 0
+  - m_Path: knight/polySurface5
+    m_Weight: 0
+  - m_Path: knight/polySurface9
+    m_Weight: 0
+  - m_Path: knight/polySurface12
+    m_Weight: 0
+  - m_Path: knight/polySurface13
+    m_Weight: 0
+  - m_Path: knight/polySurface14
+    m_Weight: 0
+  - m_Path: knight/polySurface15
+    m_Weight: 0
+  - m_Path: knight/polySurface16
+    m_Weight: 0
+  - m_Path: knight/polySurface17
+    m_Weight: 0
+  - m_Path: knight/pSphere16
+    m_Weight: 0
+  - m_Path: knight/pSphere20
+    m_Weight: 0
+  - m_Path: root
+    m_Weight: 0
+  - m_Path: root/hip
+    m_Weight: 0
+  - m_Path: root/hip/momo_L
+    m_Weight: 0
+  - m_Path: root/hip/momo_L/leg_L
+    m_Weight: 0
+  - m_Path: root/hip/momo_L/leg_L/foot_L
+    m_Weight: 0
+  - m_Path: root/hip/momo_L/leg_L/foot_L/toe_L
+    m_Weight: 0
+  - m_Path: root/hip/momo_R
+    m_Weight: 0
+  - m_Path: root/hip/momo_R/leg_R
+    m_Weight: 0
+  - m_Path: root/hip/momo_R/leg_R/foot_R
+    m_Weight: 0
+  - m_Path: root/hip/momo_R/leg_R/foot_R/toe_R
+    m_Weight: 0
+  - m_Path: root/hip/mune
+    m_Weight: 0
+  - m_Path: root/hip/mune/kata_L
+    m_Weight: 1
+  - m_Path: root/hip/mune/kata_L/arm_L
+    m_Weight: 1
+  - m_Path: root/hip/mune/kata_L/arm_L/hand_L
+    m_Weight: 1
+  - m_Path: root/hip/mune/kata_L/arm_L/hand_L/finger_L
+    m_Weight: 1
+  - m_Path: root/hip/mune/kata_R
+    m_Weight: 0
+  - m_Path: root/hip/mune/kata_R/arm_R
+    m_Weight: 0
+  - m_Path: root/hip/mune/kata_R/arm_R/hand_R
+    m_Weight: 0
+  - m_Path: root/hip/mune/kata_R/arm_R/hand_R/finger_R
+    m_Weight: 0
+  - m_Path: root/hip/mune/neck
+    m_Weight: 0
+  - m_Path: root/hip/mune/neck/head
+    m_Weight: 0
+  - m_Path: root1
+    m_Weight: 0
