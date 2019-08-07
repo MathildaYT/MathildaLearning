@@ -17,6 +17,7 @@ public class MapModelCreator : Editor
             if (_state==GameState.Start)
             {
              map.InitData();
+                MapManager.GetInstance.SetMap(map); 
             }
             
         }

@@ -58,7 +58,10 @@ public class Map : MonoBehaviour
                             break;
                         case "p":
                             _mapType = TerrianType.Player;
-                            GameObject.Instantiate(_player, pos, Quaternion.identity);
+                            var player=GameObject.Instantiate(_player, pos, Quaternion.identity);
+                            player.GetComponent<PlayerController>().pos_x = i;
+                            player.GetComponent<PlayerController>().pos_z = j;
+
                             break;
                         case "s":
                             _mapType = TerrianType.Sword;
@@ -82,5 +85,19 @@ public class Map : MonoBehaviour
             }
         _gameState = GameState.Running;
         }
+    }
+
+    public bool GetDataPoint(int x,int z, out string data)
+    {
+        data = "";
+        if (x<_terrianData.GetLength(0)&&z< _terrianData.GetLength(1))
+        {
+
+            data = _terrianData[x,z];
+
+            return true;
+        }
+
+        return false;
     }
 }

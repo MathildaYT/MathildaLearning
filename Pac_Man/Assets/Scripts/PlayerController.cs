@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     private PlayerMoveState oldState = 0;//前一次角色的状态
     public float speed = 8;
     private Animator anim;
+
+    public int pos_x;
+    public int pos_z;
+
     void Start()
     {
       anim= transform.GetComponent<Animator>();
@@ -25,6 +29,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             setState(PlayerMoveState.Up);
+            var newposz = pos_z - 1;
+            string data;
+            if (MapManager.GetInstance.GameMap.GetDataPoint(pos_x, newposz, out data))
+            {
+                Debug.Log(data);
+            }
         }
         else if (Input.GetKey(KeyCode.S))
         {
@@ -47,7 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 transformValue = new Vector3();
         int rotateValue = (_moveState - State) * 90;
-        anim.SetBool("walk", true);
+      //  anim.SetBool("walk", true);
         switch (_moveState)
         {
             case PlayerMoveState.Up:
