@@ -61,7 +61,7 @@ public class Map : MonoBehaviour
                             var player=GameObject.Instantiate(_player, pos, Quaternion.identity);
                             player.GetComponent<PlayerController>().pos_x = i;
                             player.GetComponent<PlayerController>().pos_z = j;
-
+                           // Debug.Log(i+" "+j);
                             break;
                         case "s":
                             _mapType = TerrianType.Sword;
@@ -81,7 +81,7 @@ public class Map : MonoBehaviour
                     }
                     debugstr += _terrianData[i, j];
                 }
-                Debug.Log(debugstr);
+               // Debug.Log(debugstr);
             }
         _gameState = GameState.Running;
         }

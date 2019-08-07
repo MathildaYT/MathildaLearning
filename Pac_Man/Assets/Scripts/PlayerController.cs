@@ -13,28 +13,35 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerMoveState State;//角色状态
     private PlayerMoveState oldState = 0;//前一次角色的状态
-    public float speed = 8;
+    public float speed = 3f;
     private Animator anim;
-
+    private Vector3 dest;
     public int pos_x;
     public int pos_z;
 
     void Start()
     {
       anim= transform.GetComponent<Animator>();
-
+        dest = transform.position;
     }
     void Update()
     {
+        string data;
+        int newposz;
+        if (MapManager.GetInstance.GameMap.GetDataPoint(pos_x, newposz, out data))
+        {
+            if (data == "c")
+            {
+                Vector3 temp = Vector3.MoveTowards(transform.position, dest, speed);
+                this.GetComponent<Rigidbody>().MovePosition(temp);
+            }
+            //Debug.Log(data);
+        }
         if (Input.GetKey(KeyCode.W))
         {
-            setState(PlayerMoveState.Up);
-            var newposz = pos_z - 1;
-            string data;
-            if (MapManager.GetInstance.GameMap.GetDataPoint(pos_x, newposz, out data))
-            {
-                Debug.Log(data);
-            }
+           setState(PlayerMoveState.Up);
+           newposz = pos_z - 1;
+          
         }
         else if (Input.GetKey(KeyCode.S))
         {
@@ -55,26 +62,23 @@ public class PlayerController : MonoBehaviour
 
     void setState(PlayerMoveState _moveState)
     {
-        Vector3 transformValue = new Vector3();
         int rotateValue = (_moveState - State) * 90;
-      //  anim.SetBool("walk", true);
         switch (_moveState)
         {
             case PlayerMoveState.Up:
-                transformValue = Vector3.forward * Time.deltaTime * speed;
+                dest = Vector3.forward+transform.position;
                 break;
             case PlayerMoveState.Right:
-                transformValue = Vector3.right * Time.deltaTime * speed;
+                dest = Vector3.right+ transform.position;
                 break;
             case PlayerMoveState.Back:
-                transformValue = Vector3.back * Time.deltaTime * speed;
+                dest = Vector3.back + transform.position;
                 break;
             case PlayerMoveState.Left:
-                transformValue = Vector3.left * Time.deltaTime * speed;
+                dest = Vector3.left + transform.position;
                 break;
         }
         transform.Rotate(Vector3.up, rotateValue);
-        transform.Translate(transformValue, Space.World);
         oldState = State;
         State = _moveState;
     }
