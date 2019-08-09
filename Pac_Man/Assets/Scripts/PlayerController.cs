@@ -8,7 +8,7 @@ public enum PlayerMoveState
     Right,
     Back,
     Left,
-    Stand,
+    
 }
 public class PlayerController : MonoBehaviour
 {
@@ -22,20 +22,20 @@ public class PlayerController : MonoBehaviour
     public int pos_z;
     int newposz;
     int newposx;
-
+    private bool IsStand=false;
     public Vector3 targetpos;
 
     void Start()
     {
-        anim= transform.GetComponent<Animator>();
+        anim = transform.GetComponent<Animator>();
         dest = transform.position;
         currentpos = transform.position;
     }
     void Update()
     {
-        if(State != PlayerMoveState.Stand)
+        if (!IsStand)
         {
-            if(Vector3.Distance(new Vector3(this.transform.position.x,0, this.transform.position.z), dest) > 0.01f)
+            if (Vector3.Distance(new Vector3(this.transform.position.x, 0, this.transform.position.z), dest) > 0.01f)
             {
                 Vector3 temp = Vector3.MoveTowards(currentpos, dest, speed);
                 this.GetComponent<Rigidbody>().MovePosition(temp);
@@ -44,36 +44,40 @@ public class PlayerController : MonoBehaviour
             {
                 this.transform.position = dest;
                 currentpos = dest;
-                State = PlayerMoveState.Stand;
+                IsStand = true;
             }
-        
+
         }
-
-
         newposz = pos_z;
         newposx = pos_x;
         bool verify = false;
         if (Input.GetKey(KeyCode.W))
         {
-             newposz = pos_z - 1;
-             newposx = pos_x;
-            if (CheckIsValid(newposx,newposz))
-            {
-                verify = true;
-                if (State == PlayerMoveState.Stand)
-                    setState(PlayerMoveState.Up);
-            }
-          
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
             newposz = pos_z + 1;
             newposx = pos_x;
             if (CheckIsValid(newposx, newposz))
             {
-                verify = true;
-                if (State == PlayerMoveState.Stand)
+                if (IsStand)
+                {
+                    verify = true;
+                    setState(PlayerMoveState.Up);
+
+                }
+            }
+
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            newposz = pos_z - 1;
+            newposx = pos_x;
+            if (CheckIsValid(newposx, newposz))
+            {
+                if (IsStand)
+                {
+                    verify = true;
                     setState(PlayerMoveState.Back);
+
+                }
             }
         }
 
@@ -83,9 +87,11 @@ public class PlayerController : MonoBehaviour
             newposx = pos_x - 1;
             if (CheckIsValid(newposx, newposz))
             {
-                verify = true;
-                if(State == PlayerMoveState.Stand)
+                if (IsStand)
+                {
+                    verify = true;
                     setState(PlayerMoveState.Left);
+                }
             }
         }
         if (Input.GetKey(KeyCode.D))
@@ -94,12 +100,15 @@ public class PlayerController : MonoBehaviour
             newposx = pos_x + 1;
             if (CheckIsValid(newposx, newposz))
             {
-                verify = true;
-                if (State == PlayerMoveState.Stand)
+                if (IsStand)
+                {
+                    verify = true;
+
                     setState(PlayerMoveState.Right);
+                }
             }
         }
-        if(verify)
+        if (verify)
         {
             pos_z = newposz;
             pos_x = newposx;
@@ -131,10 +140,10 @@ public class PlayerController : MonoBehaviour
         switch (_moveState)
         {
             case PlayerMoveState.Up:
-                dest = Vector3.forward+transform.position;
+                dest = Vector3.forward + transform.position;
                 break;
             case PlayerMoveState.Right:
-                dest = Vector3.right+ transform.position;
+                dest = Vector3.right + transform.position;
                 break;
             case PlayerMoveState.Back:
                 dest = Vector3.back + transform.position;
@@ -147,17 +156,17 @@ public class PlayerController : MonoBehaviour
         oldState = State;
         State = _moveState;
     }
-    public bool CheckIsValid(int posx,int posz)
+    public bool CheckIsValid(int posx, int posz)
     {
         string data;
         if (MapManager.GetInstance.GameMap.GetDataPoint(posx, posz, out data))
         {
-            if (data == "c")
+            if (data != "*")
             {
                 return true;
             }
             return false;
         }
-            return false;
+        return false;
     }
 }
