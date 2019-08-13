@@ -74,8 +74,11 @@ public class Map : MonoBehaviour
                         case "3":
                         case "4":
                             _mapType = TerrianType.Enemy;
+
                             int EnemyType = int.Parse(_terrianData[i, j]);
-                            GameObject.Instantiate(enemys[EnemyType], pos, Quaternion.identity);
+                           var enemy= GameObject.Instantiate(enemys[EnemyType], pos, Quaternion.identity);
+                            enemy.GetComponent<EnemyController>().pos_x = i;
+                            enemy.GetComponent<EnemyController>().pos_z = j;
                             break;
 
                     }

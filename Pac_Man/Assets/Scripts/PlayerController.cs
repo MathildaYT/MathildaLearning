@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
                 {
                     verify = true;
                     setState(PlayerMoveState.Up);
-
+                    IsStand = false;
                 }
             }
 
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
                 {
                     verify = true;
                     setState(PlayerMoveState.Back);
-
+                    IsStand = false;
                 }
             }
         }
@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
                 {
                     verify = true;
                     setState(PlayerMoveState.Left);
+                    IsStand = false;
                 }
             }
         }
@@ -105,6 +106,7 @@ public class PlayerController : MonoBehaviour
                     verify = true;
 
                     setState(PlayerMoveState.Right);
+                    IsStand = false;
                 }
             }
         }

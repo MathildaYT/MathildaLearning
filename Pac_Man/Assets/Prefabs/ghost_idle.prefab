@@ -105,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5752534226092450087}
   - component: {fileID: 5752534226084990683}
+  - component: {fileID: 6594801884985243024}
   m_Layer: 0
   m_Name: ghost_idle
   m_TagString: Untagged
@@ -148,6 +149,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6594801884985243024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5752534226092424455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be6f33f5dd26fd04f9c24c1ac642a63b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pos_x: 0
+  pos_z: 0
 --- !u!1 &5752534226092424457
 GameObject:
   m_ObjectHideFlags: 0
