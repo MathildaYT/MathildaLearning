@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     int newposx;
     int newposz;
     WalkState state;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ChangeValue(Random.Range(1, 5));
+        //ChangeValue(Random.Range(1, 5));
     }
     public void RandomWalk(WalkState state)
     {
@@ -94,7 +95,6 @@ public class EnemyController : MonoBehaviour
         RandomWalk(state);
 
     }
-
     public bool CheckIsValid(int posx, int posz)
     {
         string data;
