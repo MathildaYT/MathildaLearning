@@ -178,8 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17be74e746e61514c8d510fdc419a176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPointGo: {fileID: 3369741543464900824, guid: 556a1ce8bae1bef479a59e9980257ae5,
-    type: 3}
+  wayPointGos:
+  - {fileID: 3369741543464900824, guid: 556a1ce8bae1bef479a59e9980257ae5, type: 3}
+  - {fileID: 6682452480525895836, guid: a1492754a9d70499997ef554d79b170d, type: 3}
 --- !u!54 &635250620438172307
 Rigidbody:
   m_ObjectHideFlags: 0
